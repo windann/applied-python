@@ -59,7 +59,7 @@ def process(data, events, car):
       
   for poezd in data:
     for vag in poezd["cars"]:
-      if f_car in vag.values():
+      if car in vag.values():
           return len(vag["people"])
 
 
