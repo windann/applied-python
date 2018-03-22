@@ -2,13 +2,13 @@
 
 def process(data, events, car):
 
-  for i in range(len(events)):
+  for event in events:
 
-    if events[i]["type"] == "switch":
+    if event["type"] == "switch":
 
-      number_otstegnut = events[i]["cars"]
-      train_from = events[i]["train_from"]
-      train_to = events[i]["train_to"]
+      number_otstegnut = event["cars"]
+      train_from = event["train_from"]
+      train_to = event["train_to"]
 
       for poezd in data:
         if poezd["name"] == train_from:
@@ -25,11 +25,11 @@ def process(data, events, car):
           poezd["cars"].extend(otstegnuli)
       
 
-    elif events[i]["type"] == "walk":
+    elif event["type"] == "walk":
       
-      walk_pass = events[i]["passenger"]
+      walk_pass = event["passenger"]
       current_car = None
-      dist = events[i]["distance"]
+      dist = event["distance"]
       
       for poezd in data:
         for num_vagon in range(len(poezd["cars"])):
